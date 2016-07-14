@@ -17,14 +17,23 @@ var UserComponent = Vue.extend({
 
       var self = this;
       var started = new Date();
+      var timer = setInterval(function () {
+        var elapsed = new Date() - started;
+        self.$parent.notifyTotalSpeaked(elapsed + self.speakedTime);
+      }, 1);
+
       $('#timer').
         modal({
           onHide: function () {
+            clearInterval(timer);
+
             var finished = new Date();
             var nextSpeakedTime = finished - started;
             self.speakedTime += nextSpeakedTime;
             console.log('Next speaked: ' + nextSpeakedTime);
             console.log('Total speaked: ' + self.speakedTime);
+
+            self.$parent.setCurrentSpeaker(null);
           }
         }).
         modal('show');
@@ -57,7 +66,16 @@ var app = new Vue({
       input.value = '';
     },
     setCurrentSpeaker: function (speaker) {
-      this.currentSpeaker = speaker;
+      if (speaker === null) {
+        this.currentSpeaker = {};
+      } else {
+        this.currentSpeaker = speaker;
+      }
+    },
+    notifyTotalSpeaked: function (total) {
+      if (this.currentSpeaker) {
+        this.currentSpeaker.totalSpeakedTime = total;
+      }
     },
   },
 });

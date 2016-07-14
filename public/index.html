@@ -20,10 +20,7 @@
       </div>
       <div id="timer" class="ui small basic modal">
         <div class="ui header">
-          {{ currentSpeaker.name }}
-        </div>
-        <div class="content">
-          <p>Total speaked: {{ currentSpeaker.totalSpeakedTime }}</p>
+          {{ currentSpeaker.name }}: {{ currentSpeaker.totalSpeakedTime / 1000 }}
         </div>
       </div>
     </div>
