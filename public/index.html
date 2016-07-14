@@ -4,8 +4,28 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Committers</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.css" crossorigin="anonymous">
   </head>
   <body>
-    <h1>Committers</h1>
+    <div class="ui container">
+      <h1>Committers</h1>
+      <main id="entrypoint">
+        <div class="ui form">
+          <div class="field">
+            <input type="text" placeholder="name" v-on:submit="onAddUser" v-on:keyup.enter="onAddUser">
+          </div>
+        </div>
+        <div class="ui four stackable cards">
+          <user v-for="user in users" :name="user.name"></user>
+        </div>
+      </main>
+      <template id="user-card-template">
+        <div class="ui card">
+          <div class="image"><img v-bind:src="icon"></div>
+        </div>
+      </template>
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
+    <script src="/js/main.js"></script>
   </body>
 </html>
