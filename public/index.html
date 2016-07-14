@@ -19,6 +19,9 @@
         <user v-for="user in users" :name="user.name"></user>
       </div>
       <div id="timer" class="ui small basic modal">
+        <div class="image content">
+          <img class="image" v-bind:src="currentSpeaker.icon">
+        </div>
         <div class="ui header">
           {{ currentSpeaker.name }}: {{ currentSpeaker.totalSpeakedTime / 1000 }}
         </div>

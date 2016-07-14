@@ -13,6 +13,7 @@ var UserComponent = Vue.extend({
       this.$parent.setCurrentSpeaker({
         name: this.name,
         totalSpeakedTime: this.speakedTime,
+        icon: this.icon,
       });
 
       var self = this;
