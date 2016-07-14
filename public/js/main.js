@@ -3,6 +3,32 @@ var UserComponent = Vue.extend({
   props: [
     'name'
   ],
+  data: function () {
+    return {
+      speaking: false,
+      speakedTime: 0,
+    };
+  },
+  methods: {
+    onClick: function (event) {
+      this.speaking = !this.speaking;
+      var action = this.speaking ? 'show' : 'hide';
+
+      var self = this;
+      var started = new Date();
+      $('#timer').
+        modal({
+          onHide: function () {
+            var finished = new Date();
+            var nextSpeakedTime = finished - started;
+            self.speakedTime += nextSpeakedTime;
+            console.log('Next speaked: ' + nextSpeakedTime);
+            console.log('Total speaked: ' + self.speakedTime);
+          }
+        }).
+        modal(action);
+    },
+  },
   computed: {
     icon: function () {
       return 'http://cdn1.www.st-hatena.com/users/__/' + this.name + '/profile.gif';

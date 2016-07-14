@@ -18,12 +18,21 @@
       <div class="ui four cards">
         <user v-for="user in users" :name="user.name"></user>
       </div>
+      <div id="timer" class="ui small basic modal">
+        <div class="ui header">
+          Timer
+        </div>
+        <div class="content">
+        </div>
+      </div>
     </div>
     <template id="user-card-template">
-      <div class="ui fluid card">
+      <div class="ui fluid card" v-on:click="onClick">
         <div class="image"><img v-bind:src="icon"></div>
       </div>
     </template>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
     <script src="/js/main.js"></script>
   </body>
