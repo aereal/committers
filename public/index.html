@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Committers</title>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.css" crossorigin="anonymous">
+    <style>
+      .user-name {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    </style>
   </head>
   <body>
     <div id="entrypoint" class="ui container">
@@ -31,7 +38,7 @@
       <div class="ui fluid card" v-on:click="onClick">
         <div class="image"><img v-bind:src="icon"></div>
         <div class="content">
-          <div class="header">{{ name }}</div>
+          <div class="header user-name">{{ name }}</div>
           <div class="meta">
             <span>{{ speakedTime / 1000 }}</span>
           </div>
