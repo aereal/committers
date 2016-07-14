@@ -11,10 +11,15 @@ var UserComponent = Vue.extend({
 });
 Vue.component('user', UserComponent);
 
+function defaultUsersByHash(location) {
+  var names = location.hash.substring(1).split(/\s*,\s*/);
+  return names.map(function (n) { return { name: n } });
+}
+
 var app = new Vue({
   el: '#entrypoint',
   data: {
-    users: [],
+    users: defaultUsersByHash(window.location),
   },
   methods: {
     onAddUser: function (event) {
