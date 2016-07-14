@@ -5,14 +5,15 @@ var UserComponent = Vue.extend({
   ],
   data: function () {
     return {
-      speaking: false,
       speakedTime: 0,
     };
   },
   methods: {
     onClick: function (event) {
-      this.speaking = !this.speaking;
-      var action = this.speaking ? 'show' : 'hide';
+      this.$parent.setCurrentSpeaker({
+        name: this.name,
+        totalSpeakedTime: this.speakedTime,
+      });
 
       var self = this;
       var started = new Date();
@@ -26,7 +27,7 @@ var UserComponent = Vue.extend({
             console.log('Total speaked: ' + self.speakedTime);
           }
         }).
-        modal(action);
+        modal('show');
     },
   },
   computed: {
@@ -46,6 +47,7 @@ var app = new Vue({
   el: '#entrypoint',
   data: {
     users: defaultUsersByHash(window.location),
+    currentSpeaker: {},
   },
   methods: {
     onAddUser: function (event) {
@@ -53,6 +55,9 @@ var app = new Vue({
       var name = input.value;
       this.users.push({ name: name });
       input.value = '';
+    },
+    setCurrentSpeaker: function (speaker) {
+      this.currentSpeaker = speaker;
     },
   },
 });
