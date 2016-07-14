@@ -27,6 +27,12 @@
     <template id="user-card-template">
       <div class="ui fluid card" v-on:click="onClick">
         <div class="image"><img v-bind:src="icon"></div>
+        <div class="content">
+          <div class="header">{{ name }}</div>
+          <div class="meta">
+            <span>{{ speakedTime / 1000 }}</span>
+          </div>
+        </div>
       </div>
     </template>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
