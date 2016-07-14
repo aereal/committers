@@ -7,16 +7,18 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.css" crossorigin="anonymous">
   </head>
   <body>
-    <main id="entrypoint" class="ui container">
-      <div class="ui form">
-        <div class="field">
-          <input type="text" placeholder="name" v-on:submit="onAddUser" v-on:keyup.enter="onAddUser">
+    <div id="entrypoint" class="ui container">
+      <aside class="ui one item menu">
+        <div class="item">
+          <div class="ui transparent input">
+            <input type="text" placeholder="name" v-on:submit="onAddUser" v-on:keyup.enter="onAddUser">
+          </div>
         </div>
-      </div>
+      </aside>
       <div class="ui four cards">
         <user v-for="user in users" :name="user.name"></user>
       </div>
-    </main>
+    </div>
     <template id="user-card-template">
       <div class="ui fluid card">
         <div class="image"><img v-bind:src="icon"></div>
